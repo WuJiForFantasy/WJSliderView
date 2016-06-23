@@ -16,6 +16,7 @@
 
 @property (nonatomic,assign)NSInteger arrayCount;
 @property (nonatomic,assign)BOOL shoulScroll;
+
 @end
 
 @implementation WJSliderScrollView
@@ -47,7 +48,7 @@
 - (void)commonInitWithItemArray:(NSArray<UIView *> *)itemArray contentArray:(NSArray<UIView *>*)contentArray {
     self.arrayCount = itemArray.count;
     
-    self.sliderView = [[WJSliderView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 50) Array:itemArray];
+    self.sliderView = [[WJSliderView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 44) Array:itemArray];
     
     self.sliderView.isUseIndexProgress = YES;
     

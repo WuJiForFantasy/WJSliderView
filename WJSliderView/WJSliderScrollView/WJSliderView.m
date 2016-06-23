@@ -7,10 +7,11 @@
 //
 
 #import "WJSliderView.h"
+#import "WJSlider.h"
 
 @interface WJSliderView ()
 
-@property (nonatomic,strong)UIView *sliderView;
+@property (nonatomic,strong)WJSlider *sliderView;
 @property (nonatomic,assign)NSInteger index; //下标
 
 
@@ -23,10 +24,9 @@
 
 @implementation WJSliderView
 
-- (UIView *)sliderView {
+- (WJSlider *)sliderView {
     if (!_sliderView) {
-        _sliderView = [[UIView alloc]initWithFrame:CGRectMake(0,self.height-3, self.width, 3)];
-        _sliderView.backgroundColor = [UIColor redColor];
+        _sliderView = [[WJSlider alloc]initWithFrame:CGRectMake(0,0, self.width, self.height)];
         self.slider_center_x = _sliderView.center.x;
         self.slider_center_y = _sliderView.center.y;
     }
@@ -49,7 +49,7 @@
     [self addSubview:self.sliderView];
     
     [array enumerateObjectsUsingBlock:^(UIView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
-        view.frame = CGRectMake(idx * self.width, 0, self.width, self.height-3);
+        view.frame = CGRectMake(idx * self.width, 0, self.width, self.height);
         view.userInteractionEnabled = YES;
         view.tag = idx + 10;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPressed:)];
@@ -82,6 +82,11 @@
     _indexProgress = indexProgress;
     self.isUseIndexProgress = YES;
     self.sliderView.center = CGPointMake(self.slider_center_x + _indexProgress * self.width,self.slider_center_y);
+}
+
+- (void)addCustomSliderInSliderViewWith:(UIView *)view {
+    self.sliderView.hiddenDefaultView = YES;
+    [view addSubview:self.sliderView];
 }
 
 @end

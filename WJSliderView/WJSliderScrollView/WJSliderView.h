@@ -25,5 +25,7 @@
 
 @property (nonatomic,assign)id<WJSliderViewDelegate>delegate;
 
+//添加自定义元素
+- (void)addCustomSliderInSliderViewWith:(UIView *)view;
 
 @end

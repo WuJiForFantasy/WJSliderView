@@ -11,8 +11,11 @@
 
 @interface WJSliderScrollView : UIView
 
+//@property (nonatomic,strong)NSArray *itemArray;
+
 - (instancetype)initWithFrame:(CGRect)frame itemArray:(NSArray<UIView *> *)itemArray contentArray:(NSArray<UIView *>*)contentArray;
 
 @property (nonatomic,assign)id<WJSliderViewDelegate>delegate;
+
 
 @end

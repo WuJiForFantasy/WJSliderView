@@ -89,4 +89,9 @@
     [view addSubview:self.sliderView];
 }
 
+- (void)setSliderColor:(UIColor *)sliderColor {
+    _sliderColor = sliderColor;
+    self.sliderView.color = sliderColor;
+}
+
 @end

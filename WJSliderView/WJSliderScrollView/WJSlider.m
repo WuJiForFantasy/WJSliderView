@@ -56,4 +56,10 @@
     }
 }
 
+- (void)setColor:(UIColor *)color {
+    _color = color;
+    self.bottomView.backgroundColor = color;
+    self.centerView.backgroundColor = color;
+}
+
 @end

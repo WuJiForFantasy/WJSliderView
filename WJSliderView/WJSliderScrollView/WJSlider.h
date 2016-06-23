@@ -11,7 +11,7 @@
 //自定义滑条
 @interface WJSlider : UIView
 
-
+@property (nonatomic,strong)UIColor *color;
 @property (nonatomic,assign)BOOL hiddenDefaultView;
 
 @end

@@ -18,6 +18,7 @@
 
 @interface WJSliderView : UIView
 
+@property (nonatomic,strong)UIColor *sliderColor;
 @property (nonatomic,assign)CGFloat indexProgress;
 @property (nonatomic,assign)BOOL isUseIndexProgress;//如果使用了indePressgress则,index失效，避免冲突
 

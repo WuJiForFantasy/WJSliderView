@@ -12,7 +12,7 @@
 @interface WJSliderScrollView ()<UIScrollViewDelegate>
 
 @property (nonatomic,strong)UIScrollView *scrollView;
-@property (nonatomic,strong)WJSliderView *sliderView;
+
 
 @property (nonatomic,assign)NSInteger arrayCount;
 @property (nonatomic,assign)BOOL shoulScroll;
@@ -47,7 +47,7 @@
 
 - (void)commonInitWithItemArray:(NSArray<UIView *> *)itemArray contentArray:(NSArray<UIView *>*)contentArray {
     self.arrayCount = itemArray.count;
-    
+    self.itemArray = itemArray;
     self.sliderView = [[WJSliderView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 44) Array:itemArray];
     
     self.sliderView.isUseIndexProgress = YES;
@@ -77,7 +77,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat f = scrollView.contentOffset.x/self.bounds.size.width;
     self.sliderView.indexProgress = f;
-    self.progressBlock(f);
+    self.progressBlock(f,self.itemArray);
 }
 
 #pragma mark - kvo监听

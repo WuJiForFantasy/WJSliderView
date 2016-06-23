@@ -39,6 +39,11 @@
     label1.text = @"label1";
     label2.text = @"label1";
     label3.text = @"label1";
+    
+    label1.font = [UIFont systemFontOfSize:16];
+    label2.font = [UIFont systemFontOfSize:16];
+    label3.font = [UIFont systemFontOfSize:16];
+    
     label1.textAlignment = NSTextAlignmentCenter;
     label2.textAlignment = NSTextAlignmentCenter;
     label3.textAlignment = NSTextAlignmentCenter;
@@ -49,9 +54,9 @@
     
     self.scrollView = [[WJSliderScrollView alloc]initWithFrame:CGRectMake(0, 100, CGRectGetWidth(self.view.bounds), 300) itemArray:@[label1,label2,label3] contentArray:@[view1,view2,view3]];
     [self.view addSubview:self.scrollView];
-    __weak ViewController *myself = self;
-    [self.scrollView setProgressBlock:^(CGFloat f) {
-        [myself.array enumerateObjectsUsingBlock:^(CustomItemView*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//    __weak ViewController *myself = self;
+    [self.scrollView setProgressBlock:^(CGFloat f,NSArray *array) {
+        [array enumerateObjectsUsingBlock:^(CustomItemView*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (f == idx) {
                 obj.textColor = [UIColor redColor];
             }else {

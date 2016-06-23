@@ -10,7 +10,7 @@
 #import "WJSliderView.h"
 #import "WJSliderScrollView.h"
 #import "CustomItemView.h"
-@interface ViewController ()<WJSliderViewDelegate>
+@interface ViewController ()
 
 //@property (nonatomic,strong)UIScrollView *scrollView;
 @property (nonatomic,strong)WJSliderScrollView *scrollView;
@@ -49,40 +49,19 @@
     
     self.scrollView = [[WJSliderScrollView alloc]initWithFrame:CGRectMake(0, 100, CGRectGetWidth(self.view.bounds), 300) itemArray:@[label1,label2,label3] contentArray:@[view1,view2,view3]];
     [self.view addSubview:self.scrollView];
-    self.scrollView.delegate = self;
-}
-
-#pragma mark - <WJSliderViewDelegate>
-
-- (void)WJSliderViewDidIndex:(NSInteger)index {
-    NSLog(@"");
-    if (index) {
-        
-    }else {
-        
-    }
-    [self.array enumerateObjectsUsingBlock:^(CustomItemView*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (index == idx) {
-            obj.textColor = [UIColor redColor];
-        }else {
-            obj.textColor = [UIColor blackColor];
-        }
+    __weak ViewController *myself = self;
+    [self.scrollView setProgressBlock:^(CGFloat f) {
+        [myself.array enumerateObjectsUsingBlock:^(CustomItemView*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (f == idx) {
+                obj.textColor = [UIColor redColor];
+            }else {
+                obj.textColor = [UIColor blackColor];
+            }
+        }];
     }];
-    
-    switch (index) {
-        case 0:
-            
-            break;
-        case 1:
-            
-            break;
-        case 2:
-            
-            break;
-        default:
-            break;
-    }
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {

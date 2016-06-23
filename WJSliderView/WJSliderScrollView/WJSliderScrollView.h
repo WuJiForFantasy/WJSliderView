@@ -17,5 +17,7 @@
 
 @property (nonatomic,assign)id<WJSliderViewDelegate>delegate;
 
+@property (nonatomic,copy)void  (^progressBlock)(CGFloat f);
+
 
 @end

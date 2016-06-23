@@ -77,7 +77,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat f = scrollView.contentOffset.x/self.bounds.size.width;
     self.sliderView.indexProgress = f;
-
+    self.progressBlock(f);
 }
 
 #pragma mark - kvo监听
